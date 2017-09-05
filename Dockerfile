@@ -9,7 +9,7 @@ COPY ./shell/run.sh /usr/local/bin/run.sh
 RUN chmod +x /usr/local/bin/run.sh
 
 RUN apt-get update \
-	&& apt-get install --no-install-recommends --no-install-suggests -y logrotate cron\
+	&& apt-get install --no-install-recommends --no-install-suggests -y logrotate cron anacron\
     && rm -rf /var/lib/apt/lists/*
 
 EXPOSE 80 443
