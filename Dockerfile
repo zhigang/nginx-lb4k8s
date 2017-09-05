@@ -1,5 +1,9 @@
 FROM nginx:1.13
 
+RUN apt-get update \
+	&& apt-get install --no-install-recommends --no-install-suggests -y logrotate cron anacron\
+    && rm -rf /var/lib/apt/lists/*
+
 COPY ./package/ /usr/local/bin/
 RUN chmod +x /usr/local/bin/confd
 RUN mkdir -p /etc/confd/{conf.d,templates}
@@ -13,10 +17,6 @@ COPY ./config/confd/templates/nginx.tmpl /etc/confd/templates/nginx.tmpl
 COPY ./shell/run.sh /usr/local/bin/run.sh
 
 RUN chmod +x /usr/local/bin/run.sh
-
-RUN apt-get update \
-	&& apt-get install --no-install-recommends --no-install-suggests -y logrotate cron anacron\
-    && rm -rf /var/lib/apt/lists/*
 
 EXPOSE 80 443
 
