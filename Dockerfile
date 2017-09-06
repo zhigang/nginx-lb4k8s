@@ -1,12 +1,15 @@
 FROM nginx:1.13
 
 RUN apt-get update \
-	&& apt-get install --no-install-recommends --no-install-suggests -y logrotate cron anacron\
+	&& apt-get install --no-install-recommends --no-install-suggests -y logrotate cron \
     && rm -rf /var/lib/apt/lists/*
 
 COPY ./package/ /usr/local/bin/
 RUN chmod +x /usr/local/bin/confd
 RUN mkdir -p /etc/confd/{conf.d,templates}
+
+# Clear cron daily
+RUN rm -r /etc/cron.daily/*
 
 COPY ./config/cron/crontab /etc/crontab
 COPY ./config/logrotate/nginx /etc/logrotate.d/nginx
