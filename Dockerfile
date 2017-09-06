@@ -9,9 +9,10 @@ RUN chmod +x /usr/local/bin/confd
 RUN mkdir -p /etc/confd/{conf.d,templates}
 
 # Clear cron daily
-RUN rm /etc/cron.daily/{apt-compat,dpkg,passwd}
+RUN rm /etc/cron.daily/*
 
 COPY ./config/cron/crontab /etc/crontab
+COPY ./config/cron/cron.daily/ /etc/cron.daily/
 COPY ./config/logrotate/nginx /etc/logrotate.d/nginx
 COPY ./config/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY ./config/confd/nginx.toml /etc/confd/conf.d/nginx.toml
