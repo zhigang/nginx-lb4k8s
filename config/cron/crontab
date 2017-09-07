@@ -9,7 +9,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 # m h dom mon dow user  command
 17 *    * * *   root    cd / && run-parts --report /etc/cron.hourly
-01 0    * * *   root    cd / && run-parts --report /etc/cron.daily
-47 6    * * 7   root    cd / && run-parts --report /etc/cron.weekly
-52 6    1 * *   root    cd / && run-parts --report /etc/cron.monthly
+00 0    * * *   root    cd / && run-parts --report /etc/cron.daily
+47 0    * * 7   root    cd / && run-parts --report /etc/cron.weekly
+52 0    1 * *   root    cd / && run-parts --report /etc/cron.monthly
 #
