@@ -4,9 +4,8 @@ RUN apt-get update \
 	&& apt-get install --no-install-recommends --no-install-suggests -y logrotate cron \
     && rm -rf /var/lib/apt/lists/*
 
-COPY ./package/ /usr/local/bin/
+COPY ./package/confd-0.13.0-linux-amd64 /usr/local/bin/confd
 RUN chmod +x /usr/local/bin/confd
-RUN mkdir -p /etc/confd/{conf.d,templates}
 
 # Clear cron daily
 RUN rm /etc/cron.daily/*
@@ -15,8 +14,7 @@ COPY ./config/cron/crontab /etc/crontab
 COPY ./config/cron/cron.daily/ /etc/cron.daily/
 COPY ./config/logrotate/nginx /etc/logrotate.d/nginx
 COPY ./config/nginx/nginx.conf /etc/nginx/nginx.conf
-COPY ./config/confd/nginx.toml /etc/confd/conf.d/nginx.toml
-COPY ./config/confd/templates/nginx.tmpl /etc/confd/templates/nginx.tmpl
+COPY ./config/confd/ /etc/confd/
 
 COPY ./shell/run.sh /usr/local/bin/run.sh
 

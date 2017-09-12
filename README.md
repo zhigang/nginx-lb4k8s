@@ -23,5 +23,5 @@ ETCDCTL_API=3 etcdctl --endpoints="http://127.0.0.1:2379" get /registry/services
 * confd command
 
 ```
-confd -onetime -backend etcdv3 -node http://10.202.101.20:2379 -config-file /etc/confd/conf.d/nginx.toml;
+confd -onetime -backend etcdv3 -node http://127.0.0.1:2379 -config-file /etc/confd/conf.d/nginx.toml;
 ```
