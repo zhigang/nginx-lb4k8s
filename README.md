@@ -1,5 +1,5 @@
 ### 版本(Vsersion)
-* nginx: 1.13
+* nginx: 1.13
 * confd: 0.14.0
 
 ### 使用(How to use)
