@@ -8,7 +8,7 @@ RUN apt-get update \
 ENV CONFD_VERSION 0.14.0
 
 RUN cd /opt/ \
-    && wget -O confd https://github.com/kelseyhightower/confd/releases/download/v${CEREBRO_VERSION}/confd-${CEREBRO_VERSION}-linux-amd64 \
+    && wget -O confd https://github.com/kelseyhightower/confd/releases/download/v${CONFD_VERSION}/confd-${CONFD_VERSION}-linux-amd64 \
     && mv confd /usr/local/bin \
     && chmod +x /usr/local/bin/confd
 
