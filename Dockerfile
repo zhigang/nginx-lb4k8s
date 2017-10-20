@@ -4,8 +4,13 @@ RUN apt-get update \
 	&& apt-get install --no-install-recommends --no-install-suggests -y logrotate cron \
     && rm -rf /var/lib/apt/lists/*
 
-COPY ./package/confd-0.13.0-linux-amd64 /usr/local/bin/confd
-RUN chmod +x /usr/local/bin/confd
+# Use confd: https://github.com/kelseyhightower/confd
+ENV CONFD_VERSION 0.14.0
+
+RUN cd /opt/ \
+    && wget -O confd https://github.com/kelseyhightower/confd/releases/download/v${CEREBRO_VERSION}/confd-${CEREBRO_VERSION}-linux-amd64 \
+    && mv confd /usr/local/bin \
+    && chmod +x /usr/local/bin/confd
 
 # Clear cron daily
 RUN rm /etc/cron.daily/*
