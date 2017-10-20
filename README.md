@@ -2,6 +2,14 @@
 * nginx: 1.13
 * confd: 0.14.0
 
+### Docker
+```
+docker pull siriuszg/nginx-lb4k8s
+```
+Tag:
+* `v1.0`,`latest`
+    * nginx: 1.13, confd: 0.14.0
+
 ### 使用(How to use)
 * Set Backend on `config/confd/confd.toml`
 ```
