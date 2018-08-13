@@ -1,6 +1,0 @@
-backend = "etcdv3"
-confdir = "/etc/confd"
-interval = 10
-nodes = [
-  "http://127.0.0.1:2379",
-]
